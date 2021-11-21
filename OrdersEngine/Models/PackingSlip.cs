@@ -7,18 +7,8 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models
 {
-    public class PhysicalProduct : IProduct
+    public class PackingSlip : ISlip
     {
         public Guid Id { get; set; }
-
-        public PhysicalProduct()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        public ISlip GenerateSlip()
-        {
-            return new PackingSlip();
-        }
     }
 }

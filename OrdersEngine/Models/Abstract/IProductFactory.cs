@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models.Abstract
 {
-    public interface ISlip : IPayment
+    public interface IProductFactory
     {
-        
+        IProduct CreateProduct();
     }
 }

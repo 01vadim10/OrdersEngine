@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models.Abstract
 {
-    internal interface IProduct
+    public interface IProduct
     {
         Guid Id { get; set; }
+
+        ISlip GenerateSlip();
     }
 }
