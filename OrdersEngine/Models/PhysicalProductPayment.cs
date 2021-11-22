@@ -7,18 +7,15 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models
 {
-    public class PhysicalProduct : IProduct
+    public class PhysicalProductPayment : IProduct
     {
         public Guid Id { get; set; }
+        public int Amount { get; set; }
 
-        public PhysicalProduct()
+        public PhysicalProductPayment(int amount)
         {
             Id = Guid.NewGuid();
-        }
-
-        public ISlip GenerateSlip()
-        {
-            return new PackingSlip();
+            Amount = amount;
         }
     }
 }

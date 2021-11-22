@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrdersEngine.Models;
+using System;
 
 namespace OrdersEngine
 {
@@ -6,7 +7,9 @@ namespace OrdersEngine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var factory = new PaymentFactory();
+            var result = factory.GetPaymentResult();
+            Console.WriteLine($"Result id: {result.Id}");
         }
     }
 }

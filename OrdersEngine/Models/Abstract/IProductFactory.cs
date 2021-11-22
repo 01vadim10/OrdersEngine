@@ -8,6 +8,6 @@ namespace OrdersEngine.Models.Abstract
 {
     public interface IProductFactory
     {
-        IProduct CreateProduct();
+        IPaymentResult CreateProduct(int amount);
     }
 }

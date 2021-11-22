@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models
 {
-    public class PhysicalProductFactory : IProductFactory
+    internal class PhysicalProductFactory : IProductFactory
     {
-        public IProduct CreateProduct()
+        public IPaymentResult CreateProduct(int amount)
         {
-            return new PhysicalProduct();
+            if (amount > 0)
+                return new PackingSlip("shipping");
+
+            return null;
         }
     }
 }

@@ -7,14 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models
 {
-    public class PackingSlip : ISlip
+    public class ShippingSlip : ISlipType
     {
-        public Guid Id { get; set; }
-        public string Goal { get; set; }
-
-        public PackingSlip(string goal)
-        {
-            Goal = goal;
-        }
     }
 }

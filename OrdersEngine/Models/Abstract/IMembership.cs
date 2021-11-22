@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models.Abstract
 {
-    public interface IMembership : IPayment
+    public interface IMembership : IProduct
     {
         void Activate();
     }

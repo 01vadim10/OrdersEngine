@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models.Abstract
 {
-    public interface ISlip : IPaymentResult
+    public interface ISlipType
     {
-        
     }
 }
