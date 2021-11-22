@@ -50,7 +50,7 @@ namespace OrdersEngine.Models
                         && int.TryParse(s, out int amount)
                         && amount > 0)
                     {
-                        return namedFactories[i].Item2.CreateProduct(amount);
+                        return namedFactories[i].Item2.CreateProduct(amount, string.Empty);
                     }
                 }
                 Console.WriteLine("Incorrect input, try again.");

@@ -12,6 +12,7 @@ namespace OrdersEngine.Models
     {
         public Guid Id { get; set; }
         public PaymentResultEnum Goal { get; set; }
+        public string Content { get; set; }
 
         public Membership(PaymentResultEnum goal)
         {

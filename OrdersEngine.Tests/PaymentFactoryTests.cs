@@ -64,13 +64,18 @@ namespace OrdersEngine.Tests
             Assert.Equal(Models.Abstract.PaymentResultEnum.Upgrade, processedPayment.Goal);
         }
 
-        //[Theory]
-        //[InlineData(10)]
-        //public void VideoTest(int amount)
-        //{
-        //    var factory = new VideoFactory();
-        //    var processedPayment = factory.CreateProduct(amount);
-        //    Assert.Equal(Models.Abstract.PaymentResultEnum.Upgrade, processedPayment.Goal);
-        //}
+        [Theory]
+        [InlineData(10)]
+        public void VideoTest(int amount)
+        {
+            var factory = new VideoFactory();
+            
+            var processedPayment = factory.CreateProduct(amount);
+            Assert.Equal(Models.Abstract.PaymentResultEnum.Video, processedPayment.Goal);
+
+            var processedPayment2 = factory.CreateProduct(amount, "Learning to Ski");
+            Assert.Equal(Models.Abstract.PaymentResultEnum.Video, processedPayment2.Goal);
+            Assert.Equal("First Aid", ((PackingSlip<VideoProductOfPayment>)processedPayment2).Content.ExtraVideo);
+        }
     }
 }

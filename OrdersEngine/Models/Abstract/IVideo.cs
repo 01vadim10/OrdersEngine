@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models.Abstract
 {
-    public interface IProductFactory
+    public interface IVideo
     {
-        IPaymentResult CreateProduct(int amount, string details);
-        IPaymentResult GenerateProduct(string details);
+        string Name { get; set; }
+        string ExtraBonus { get; set; }
     }
 }

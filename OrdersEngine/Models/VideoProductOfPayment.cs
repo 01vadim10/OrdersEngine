@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models
 {
-    public class UpgradeMembershipFactory : MembershipFactory
+    public class VideoProductOfPayment : ISlipType
     {
-        public override IPaymentResult GenerateProduct(string details) => new Membership(PaymentResultEnum.Upgrade);
+        public string ExtraVideo { get; set; }
     }
 }
