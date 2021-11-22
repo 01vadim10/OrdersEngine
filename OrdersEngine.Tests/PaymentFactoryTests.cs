@@ -29,14 +29,21 @@ namespace OrdersEngine.Tests
         }
         
         [Theory]
-        [InlineData(100)]
-        public void PaymentForBookTest(int amount)
+        [InlineData(1)]
+        public void PaymentForBookNegativeTest(int amount)
         {
             var factory = new BookFactory();
             var processedPayment = factory.CreateProduct(amount);
-            Assert.NotNull(processedPayment);
-            Assert.True(processedPayment.Goal.HasFlag(Models.Abstract.PaymentResultEnum.Shipping));
-            Assert.True(processedPayment.Goal.HasFlag(Models.Abstract.PaymentResultEnum.RoyaltyDep));
+            Assert.Null(processedPayment);
+        }
+        
+        [Theory]
+        [InlineData(1)]
+        public void PaymentForPhysicalProductNegativeTest(int amount)
+        {
+            var factory = new PhysicalProductFactory();
+            var processedPayment = factory.CreateProduct(amount);
+            Assert.Null(processedPayment);
         }
     }
 }

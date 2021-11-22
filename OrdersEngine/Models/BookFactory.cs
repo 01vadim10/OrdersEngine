@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models
 {
-    public class BookFactory : IProductFactory
+    public class BookFactory : PhysicalProductFactory
     {
-        public IPaymentResult CreateProduct(int amount)
+        public override IPaymentResult GenerateProduct()
         {
-            if (amount > 0)
-            {
-                PaymentResultEnum result = PaymentResultEnum.Shipping | PaymentResultEnum.RoyaltyDep;
-                return new PackingSlip(result);
-            }
-
-            return null;
+            PaymentResultEnum result = PaymentResultEnum.Shipping | PaymentResultEnum.RoyaltyDep;
+            return new PackingSlip(result);
         }
     }
 }

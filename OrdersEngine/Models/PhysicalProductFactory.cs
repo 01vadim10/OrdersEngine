@@ -9,12 +9,16 @@ namespace OrdersEngine.Models
 {
     public class PhysicalProductFactory : IProductFactory
     {
+        const int COMMISION = 2;
         public IPaymentResult CreateProduct(int amount)
         {
-            if (amount > 0)
-                return new PackingSlip(PaymentResultEnum.Shipping);
+            if (GenerateCommision(amount) > 0)
+                return GenerateProduct();
 
             return null;
         }
+
+        private int GenerateCommision(int amount) => amount - COMMISION;
+        public virtual IPaymentResult GenerateProduct() => new PackingSlip(PaymentResultEnum.Shipping);
     }
 }
