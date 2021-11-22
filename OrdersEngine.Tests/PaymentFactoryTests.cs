@@ -7,26 +7,36 @@ namespace OrdersEngine.Tests
 {
     public class PaymentFactoryTests
     {
-        PaymentFactory _factory;
-
-        public PaymentFactoryTests()
-        {
-            _factory = new PaymentFactory();
-        }
-
-        [Fact]
-        public void PaymentForPhysicalProductTest()
+        [Theory]
+        [InlineData(100)]
+        public void PaymentForPhysicalProductTest(int amount)
         {
             var factory = new PhysicalProductFactory();
-            var processedPayment = factory.CreateProduct(100);
-            Assert.IsType<PackingSlip>(processedPayment);
+            var processedPayment = factory.CreateProduct(amount);
+            Assert.NotNull(processedPayment);
+            Assert.Equal(Models.Abstract.PaymentResultEnum.Shipping, processedPayment.Goal);
         }
 
-        [Fact]
-        public void PaymentForBookTest()
+        [Theory]
+        [InlineData(100)]
+        public void PaymentForBookTest(int amount)
         {
-            var processedPayment = _factory.GetPaymentResult(new BookPayment(20));
-            var packingSlips = (processedPayment);
+            var factory = new BookFactory();
+            var processedPayment = factory.CreateProduct(amount);
+            Assert.NotNull(processedPayment);
+            Assert.True(processedPayment.Goal.HasFlag(Models.Abstract.PaymentResultEnum.Shipping));
+            Assert.True(processedPayment.Goal.HasFlag(Models.Abstract.PaymentResultEnum.RoyaltyDep));
+        }
+        
+        [Theory]
+        [InlineData(100)]
+        public void PaymentForBookTest(int amount)
+        {
+            var factory = new BookFactory();
+            var processedPayment = factory.CreateProduct(amount);
+            Assert.NotNull(processedPayment);
+            Assert.True(processedPayment.Goal.HasFlag(Models.Abstract.PaymentResultEnum.Shipping));
+            Assert.True(processedPayment.Goal.HasFlag(Models.Abstract.PaymentResultEnum.RoyaltyDep));
         }
     }
 }

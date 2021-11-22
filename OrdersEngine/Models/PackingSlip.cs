@@ -10,9 +10,9 @@ namespace OrdersEngine.Models
     public class PackingSlip : ISlip
     {
         public Guid Id { get; set; }
-        public string Goal { get; set; }
+        public PaymentResultEnum Goal { get; set; }
 
-        public PackingSlip(string goal)
+        public PackingSlip(PaymentResultEnum goal)
         {
             Goal = goal;
         }
