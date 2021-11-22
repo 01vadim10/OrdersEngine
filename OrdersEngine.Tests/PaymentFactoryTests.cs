@@ -55,13 +55,22 @@ namespace OrdersEngine.Tests
             Assert.Equal(Models.Abstract.PaymentResultEnum.Activate, processedPayment.Goal);
         }
         
+        [Theory]
+        [InlineData(10)]
+        public void UpgradeMembershipTest(int amount)
+        {
+            var factory = new UpgradeMembershipFactory();
+            var processedPayment = factory.CreateProduct(amount);
+            Assert.Equal(Models.Abstract.PaymentResultEnum.Upgrade, processedPayment.Goal);
+        }
+
         //[Theory]
         //[InlineData(10)]
-        //public void UpgradeMembershipTest(int amount)
+        //public void VideoTest(int amount)
         //{
-        //    var factory = new UpgradeMembershipFactory();
+        //    var factory = new VideoFactory();
         //    var processedPayment = factory.CreateProduct(amount);
-        //    Assert.Equal(Models.Abstract.PaymentResultEnum.Activate, processedPayment.Goal);
+        //    Assert.Equal(Models.Abstract.PaymentResultEnum.Upgrade, processedPayment.Goal);
         //}
     }
 }

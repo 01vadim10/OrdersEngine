@@ -12,11 +12,13 @@ namespace OrdersEngine.Models
         public IPaymentResult CreateProduct(int amount)
         {
             if (amount > 0) {
-                var membership = new Membership(PaymentResultEnum.Activate);
+                Membership membership = (Membership)GenerateProduct();
                 return membership.Execute("user@test.com");
             }
 
             return null;
         }
+
+        public virtual IPaymentResult GenerateProduct() => new Membership(PaymentResultEnum.Activate);
     }
 }

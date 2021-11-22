@@ -9,5 +9,6 @@ namespace OrdersEngine.Models.Abstract
     public interface IProductFactory
     {
         IPaymentResult CreateProduct(int amount);
+        IPaymentResult GenerateProduct();
     }
 }
