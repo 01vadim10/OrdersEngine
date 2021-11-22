@@ -14,6 +14,7 @@ namespace OrdersEngine.Models
 
         public PaymentFactory()
         {
+            // !Here we can replace Reflection with some of IoC containers like Autofac or Ninject
             foreach (var t in typeof(PaymentFactory).Assembly.GetTypes())
             {
                 if (typeof(IProductFactory).IsAssignableFrom(t) && !t.IsInterface)
@@ -24,6 +25,8 @@ namespace OrdersEngine.Models
             }
         }
 
+
+        
         public IPaymentResult GetPaymentResult()
         {
             Console.WriteLine("Available payments:");
@@ -52,8 +55,6 @@ namespace OrdersEngine.Models
                 }
                 Console.WriteLine("Incorrect input, try again.");
             }
-
-            return null;
         }
     }
 }

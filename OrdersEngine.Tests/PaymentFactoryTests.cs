@@ -45,5 +45,23 @@ namespace OrdersEngine.Tests
             var processedPayment = factory.CreateProduct(amount);
             Assert.Null(processedPayment);
         }
+
+        [Theory]
+        [InlineData(10)]
+        public void ActivateMembershipTest(int amount)
+        {
+            var factory = new MembershipFactory();
+            var processedPayment = factory.CreateProduct(amount);
+            Assert.Equal(Models.Abstract.PaymentResultEnum.Activate, processedPayment.Goal);
+        }
+        
+        //[Theory]
+        //[InlineData(10)]
+        //public void UpgradeMembershipTest(int amount)
+        //{
+        //    var factory = new UpgradeMembershipFactory();
+        //    var processedPayment = factory.CreateProduct(amount);
+        //    Assert.Equal(Models.Abstract.PaymentResultEnum.Activate, processedPayment.Goal);
+        //}
     }
 }

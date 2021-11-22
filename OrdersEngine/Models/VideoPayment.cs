@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models
 {
-    public class BookPayment : IProduct
+    public class VideoPayment : IProduct
     {
         public Guid Id { get; set; }
         public int Amount { get; set; }
 
-        public BookPayment(int amount)
+        public VideoPayment(int amount)
         {
             Id = Guid.NewGuid();
             Amount = amount;

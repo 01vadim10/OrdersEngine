@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace OrdersEngine.Models.Abstract
 {
-    public interface IMembership : IProduct
+    public interface IMembership : IPaymentResult
     {
-        void Activate();
+        IPaymentResult Execute(string email);
+        void SendEmail(string email);
     }
 }
